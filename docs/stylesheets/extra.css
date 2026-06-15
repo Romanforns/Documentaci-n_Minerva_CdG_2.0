@@ -13,6 +13,16 @@
 
 [data-md-color-scheme="slate"][data-md-color-primary="molins"] {
   --md-typeset-a-color: #4dd4c4;
+  --md-default-fg-color: #e8e8e8;
+  --md-default-fg-color--light: #ffffff;
+  --md-default-fg-color--lighter: #ffffff;
+  --md-default-fg-color--lightest: #ffffff;
+  --md-default-bg-color: #1a1a1a;
+}
+
+[data-md-color-scheme="default"][data-md-color-primary="molins"] {
+  --md-default-fg-color: #1a1a1a;
+  --md-default-bg-color: #ffffff;
 }
 
 .md-header,
@@ -132,10 +142,12 @@
 /* Iconos, búsqueda, GitHub y toggle claro/oscuro en blanco */
 .md-header .md-icon,
 .md-header .md-icon svg,
+.md-header .md-icon svg path,
 .md-header__button,
-.md-header__button svg {
+.md-header__button svg,
+.md-header__button svg path {
   color: #ffffff !important;
-  fill: currentColor !important;
+  fill: #ffffff !important;
 }
 
 .md-header label[for="__search"],
@@ -144,37 +156,85 @@
   color: #ffffff !important;
 }
 
+.md-header label[for="__search"] .md-icon svg,
+.md-header label[for="__palette_0"] .md-icon svg,
+.md-header label[for="__palette_1"] .md-icon svg,
+.md-header label[for="__search"] .md-icon svg path,
+.md-header label[for="__palette_0"] .md-icon svg path,
+.md-header label[for="__palette_1"] .md-icon svg path {
+  fill: #ffffff !important;
+}
+
+.md-header .md-search__input,
 .md-search__input {
   color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
   background-color: rgba(255, 255, 255, 0.12) !important;
+  caret-color: #ffffff !important;
 }
 
+.md-header .md-search__input::placeholder,
 .md-search__input::placeholder {
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  opacity: 1 !important;
 }
 
-.md-search__icon {
+.md-header .md-search__icon,
+.md-search__icon,
+.md-header .md-search__icon svg,
+.md-search__icon svg,
+.md-header .md-search__icon svg path,
+.md-search__icon svg path {
   color: #ffffff !important;
+  fill: #ffffff !important;
 }
 
+.md-header .md-source,
 .md-source {
   color: #ffffff !important;
 }
 
+.md-header .md-source__icon,
 .md-source__icon,
-.md-source__icon svg {
+.md-header .md-source__icon svg,
+.md-source__icon svg,
+.md-header .md-source__icon svg path,
+.md-source__icon svg path {
   color: #ffffff !important;
-  fill: currentColor !important;
+  fill: #ffffff !important;
 }
 
+.md-header .md-source__repository,
+.md-header .md-source__fact,
 .md-source__repository,
 .md-source__fact,
 .md-source__fact .md-source__fact-icon {
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: rgba(255, 255, 255, 0.92) !important;
 }
 
-.md-source__fact .md-icon svg {
-  fill: currentColor !important;
+/* Contenido legible en modo oscuro */
+[data-md-color-scheme="slate"] .md-typeset,
+[data-md-color-scheme="slate"] .md-typeset p,
+[data-md-color-scheme="slate"] .md-typeset li,
+[data-md-color-scheme="slate"] .md-typeset td,
+[data-md-color-scheme="slate"] .md-typeset th {
+  color: #e8e8e8;
+}
+
+[data-md-color-scheme="slate"] .md-typeset h1,
+[data-md-color-scheme="slate"] .md-typeset h2,
+[data-md-color-scheme="slate"] .md-typeset h3,
+[data-md-color-scheme="slate"] .md-typeset h4 {
+  color: #ffffff !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset a {
+  color: #4dd4c4;
+}
+
+[data-md-color-scheme="slate"] .md-typeset code {
+  color: #f5f5f5;
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 @media screen and (min-width: 76.25em) {
