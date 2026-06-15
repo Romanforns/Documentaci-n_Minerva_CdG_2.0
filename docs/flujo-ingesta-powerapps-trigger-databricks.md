@@ -262,7 +262,7 @@ Pantalla **Minerva — Gestión de Cargas**: desplegables en cascada (región �
 | Propiedad | Valor |
 | --- | --- |
 | Artefacto repo | [`ADF File Processing App_preUAT.msapp`](../PowerApps/ADF%20File%20Processing%20App_preUAT.msapp) |
-| App publicada UAT | Ver [BLOQUE 1](about:blank#bloque-1--accesos-y-ubicaciones-uat) |
+| App publicada UAT | Ver [BLOQUE 1](#bloque-1-accesos-y-ubicaciones-uat) |
 | Pantalla principal | `Gestión_Cargas` (1366×768) |
 | Flujo invocado | `PowerAppV2->HTTP` |
 
