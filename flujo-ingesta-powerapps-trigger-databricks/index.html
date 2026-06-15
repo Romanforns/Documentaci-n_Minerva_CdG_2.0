@@ -1,0 +1,3432 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://romanforns.github.io/Documentaci-n_Minerva_CdG_2.0/flujo-ingesta-powerapps-trigger-databricks/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../imagen.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Flujo ingesta PowerApps - Minerva CdG Evolution 2.0 — Documentación</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="molins" data-md-color-accent="molins">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#flujo-ingesta-powerapps-trigger-databricks-minerva-cdg-evolution-20" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Minerva CdG Evolution 2.0 — Documentación" class="md-header__button md-logo" aria-label="Minerva CdG Evolution 2.0 — Documentación" data-md-component="logo">
+      
+  <img src="../imagen.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Minerva CdG Evolution 2.0 — Documentación
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Flujo ingesta PowerApps
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="molins" data-md-color-accent="molins"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="molins" data-md-color-accent="molins"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Romanforns/Documentaci-n_Minerva_CdG_2.0" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Documentaci-n_Minerva_CdG_2.0
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Flujo ingesta PowerApps
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Minerva CdG Evolution 2.0 — Documentación" class="md-nav__button md-logo" aria-label="Minerva CdG Evolution 2.0 — Documentación" data-md-component="logo">
+      
+  <img src="../imagen.png" alt="logo">
+
+    </a>
+    Minerva CdG Evolution 2.0 — Documentación
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Romanforns/Documentaci-n_Minerva_CdG_2.0" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Documentaci-n_Minerva_CdG_2.0
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flujo ingesta PowerApps
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flujo ingesta PowerApps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indice-de-bloques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Índice de bloques
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-0-metadatos-y-alcance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 0 — Metadatos y alcance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 0 — Metadatos y alcance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alcance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alcance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glosario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Glosario
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-1-accesos-y-ubicaciones-uat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 1 — Accesos y ubicaciones UAT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 1 — Accesos y ubicaciones UAT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-negocio_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accesos-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accesos principales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infraestructura-tecnica-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Infraestructura técnica (referencia)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapa-de-relaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapa de relaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-2-como-funciona-la-solucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 2 — Cómo funciona la solución
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 2 — Cómo funciona la solución">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-negocio_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swimlane-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Swimlane global
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#narrativa-del-recorrido-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Narrativa del recorrido completo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secuencia-temporal-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secuencia temporal global
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-3-configuracion-y-prerequisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 3 — Configuración y prerequisitos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 3 — Configuración y prerequisitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#permisos-de-usuario-lista-test2-minervapermisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permisos de usuario (lista Test2 / MinervaPermisos)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preparacion-sharepoint-solo-plantilla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preparación SharePoint (solo PLANTILLA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importacion-y-publicacion-de-la-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importación y publicación de la app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quien-configura-que" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quién configura qué
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-4-power-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 4 — Power App
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 4 — Power App">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-negocio_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detalle-tecnico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detalle técnico
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matriz-boton-parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matriz botón → parámetros
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selectores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selectores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invocacion-power-automate-8-parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invocación Power Automate (8 parámetros)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#panel-de-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Panel de estado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-journey-en-la-pantalla-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama — journey en la pantalla principal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#narrativa-que-hace-la-app-antes-de-llamar-a-azure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Narrativa — qué hace la app antes de llamar a Azure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-5-power-automate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 5 — Power Automate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 5 — Power Automate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-negocio_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identidad-del-flujo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identidad del flujo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-general-bifurcacion-por-origen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama general — bifurcación por origen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-detallado-cuando-origenplantilla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama detallado — cuando origen=PLANTILLA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rama-plantilla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rama PLANTILLA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-rama-maestro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama — rama MAESTRO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rama-maestro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rama MAESTRO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secuencia-comparativa-plantilla-vs-maestro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secuencia — comparativa PLANTILLA vs MAESTRO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rutas-sharepoint-en-power-automate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rutas SharePoint en Power Automate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contrato-http-hacia-adf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contrato HTTP hacia ADF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mensajes-pa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mensajes PA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-6-flujos-de-negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 6 — Flujos de negocio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 6 — Flujos de negocio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#antes-de-pulsar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antes de pulsar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#61-procesar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 — Procesar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-reprocesar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 — Reprocesar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-borrar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 — Borrar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-actualizar-maestros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 — Actualizar Maestros
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mensajes-al-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mensajes al usuario
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-7-azure-data-factory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 7 — Azure Data Factory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 7 — Azure Data Factory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-negocio_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vista-de-pipelines-como-encajan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vista de pipelines — cómo encajan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#71-orquestador-minerva_main_pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 — Orquestador MINERVA_Main_pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-validaciones-y-ramas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama de validaciones y ramas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-plantillas-excel-minerva_sharepoint_to_blob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 — Plantillas Excel (minerva_sharepoint_to_blob)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-por-accion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama por acción
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-maestros-listas-minerva_sharepoint_to_blob_lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 — Maestros listas (minerva_sharepoint_to_blob_lists)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-foreach-listas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama ForEach listas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-trigger-databricks-databricks-job-with-params" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 — Trigger Databricks (Databricks Job with Params)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-8-matriz-de-parametros-e2e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 8 — Matriz de parámetros E2E
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 8 — Matriz de parámetros E2E">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-json-plantilla-databricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo JSON — PLANTILLA → Databricks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-json-maestro-databricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo JSON — MAESTRO → Databricks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-recorrido-procesar-pl-narrativa-completa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo recorrido — Procesar PL (narrativa completa)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-9-errores-frecuentes-y-soporte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 9 — Errores frecuentes y soporte
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-11-deuda-tecnica-conocida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 11 — Deuda técnica conocida
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#indice-de-bloques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Índice de bloques
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-0-metadatos-y-alcance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 0 — Metadatos y alcance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 0 — Metadatos y alcance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alcance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alcance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glosario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Glosario
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-1-accesos-y-ubicaciones-uat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 1 — Accesos y ubicaciones UAT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 1 — Accesos y ubicaciones UAT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-negocio_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accesos-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accesos principales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infraestructura-tecnica-referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Infraestructura técnica (referencia)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapa-de-relaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapa de relaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-2-como-funciona-la-solucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 2 — Cómo funciona la solución
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 2 — Cómo funciona la solución">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-negocio_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swimlane-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Swimlane global
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#narrativa-del-recorrido-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Narrativa del recorrido completo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secuencia-temporal-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secuencia temporal global
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-3-configuracion-y-prerequisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 3 — Configuración y prerequisitos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 3 — Configuración y prerequisitos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#permisos-de-usuario-lista-test2-minervapermisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permisos de usuario (lista Test2 / MinervaPermisos)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preparacion-sharepoint-solo-plantilla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preparación SharePoint (solo PLANTILLA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importacion-y-publicacion-de-la-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importación y publicación de la app
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quien-configura-que" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quién configura qué
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-4-power-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 4 — Power App
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 4 — Power App">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-negocio_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detalle-tecnico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detalle técnico
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matriz-boton-parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matriz botón → parámetros
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selectores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selectores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invocacion-power-automate-8-parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Invocación Power Automate (8 parámetros)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#panel-de-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Panel de estado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-journey-en-la-pantalla-principal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama — journey en la pantalla principal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#narrativa-que-hace-la-app-antes-de-llamar-a-azure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Narrativa — qué hace la app antes de llamar a Azure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-5-power-automate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 5 — Power Automate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 5 — Power Automate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-negocio_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identidad-del-flujo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identidad del flujo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-general-bifurcacion-por-origen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama general — bifurcación por origen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-detallado-cuando-origenplantilla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama detallado — cuando origen=PLANTILLA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rama-plantilla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rama PLANTILLA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-rama-maestro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama — rama MAESTRO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rama-maestro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rama MAESTRO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secuencia-comparativa-plantilla-vs-maestro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secuencia — comparativa PLANTILLA vs MAESTRO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rutas-sharepoint-en-power-automate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rutas SharePoint en Power Automate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contrato-http-hacia-adf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contrato HTTP hacia ADF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mensajes-pa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mensajes PA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-6-flujos-de-negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 6 — Flujos de negocio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 6 — Flujos de negocio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#antes-de-pulsar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Antes de pulsar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#61-procesar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 — Procesar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-reprocesar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 — Reprocesar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-borrar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 — Borrar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-actualizar-maestros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 — Actualizar Maestros
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mensajes-al-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mensajes al usuario
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-7-azure-data-factory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 7 — Azure Data Factory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 7 — Azure Data Factory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#para-negocio_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Para negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vista-de-pipelines-como-encajan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vista de pipelines — cómo encajan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#71-orquestador-minerva_main_pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 — Orquestador MINERVA_Main_pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-de-validaciones-y-ramas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama de validaciones y ramas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-plantillas-excel-minerva_sharepoint_to_blob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 — Plantillas Excel (minerva_sharepoint_to_blob)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-por-accion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama por acción
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-maestros-listas-minerva_sharepoint_to_blob_lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 — Maestros listas (minerva_sharepoint_to_blob_lists)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrama-foreach-listas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama ForEach listas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-trigger-databricks-databricks-job-with-params" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 — Trigger Databricks (Databricks Job with Params)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-8-matriz-de-parametros-e2e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 8 — Matriz de parámetros E2E
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BLOQUE 8 — Matriz de parámetros E2E">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-json-plantilla-databricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo JSON — PLANTILLA → Databricks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-json-maestro-databricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo JSON — MAESTRO → Databricks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-recorrido-procesar-pl-narrativa-completa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo recorrido — Procesar PL (narrativa completa)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-9-errores-frecuentes-y-soporte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 9 — Errores frecuentes y soporte
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloque-11-deuda-tecnica-conocida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BLOQUE 11 — Deuda técnica conocida
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+    <a href="https://github.com/Romanforns/Documentaci-n_Minerva_CdG_2.0/edit/master/docs/flujo-ingesta-powerapps-trigger-databricks.md" title="Editar esta página" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="flujo-ingesta-powerapps-trigger-databricks-minerva-cdg-evolution-20">Flujo Ingesta PowerApps - Trigger DataBricks (Minerva CdG Evolution 2.0)</h1>
+<h2 id="indice-de-bloques">Índice de bloques</h2>
+<table>
+<thead>
+<tr>
+<th>Bloque</th>
+<th>Sección</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><a href="#bloque-0-metadatos-y-alcance">Metadatos y alcance</a></td>
+<td>Alcance del documento, audiencia y glosario de términos clave.</td>
+</tr>
+<tr>
+<td>1</td>
+<td><a href="#bloque-1-accesos-y-ubicaciones-uat">Accesos y ubicaciones UAT</a></td>
+<td>Enlaces directos a la app, SharePoint, listas y mapa de componentes.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="#bloque-2-como-funciona-la-solucion">Cómo funciona la solución</a></td>
+<td>Visión de negocio, swimlane global y secuencia temporal del flujo E2E.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="#bloque-3-configuracion-y-prerequisitos">Configuración y prerequisitos</a></td>
+<td>Permisos de usuario, preparación de SharePoint e importación de artefactos.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="#bloque-4-power-app">Power App</a></td>
+<td>Pantallas, selectores en cascada, RBAC y botones de la canvas app.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="#bloque-5-power-automate">Power Automate</a></td>
+<td>Flujo PowerAppV2→HTTP, ramas PLANTILLA/MAESTRO y diagramas detallados.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="#bloque-6-flujos-de-negocio">Flujos de negocio</a></td>
+<td>Cuatro escenarios: procesar, reprocesar, borrar y actualizar maestros.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="#bloque-7-azure-data-factory">Azure Data Factory</a></td>
+<td>Pipelines main, plantillas, maestros y wrapper hacia Databricks.</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="#bloque-8-matriz-de-parametros-e2e">Matriz de parámetros E2E</a></td>
+<td>Correspondencia de parámetros entre app, PA, ADF y job Databricks.</td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="#bloque-9-errores-frecuentes-y-soporte">Errores frecuentes y soporte</a></td>
+<td>Síntomas habituales, causa probable y dónde mirar por capa.</td>
+</tr>
+<tr>
+<td>11</td>
+<td><a href="#bloque-11-deuda-tecnica-conocida">Deuda técnica conocida</a></td>
+<td>Limitaciones actuales y pantallas o funciones aún en desarrollo.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="bloque-0-metadatos-y-alcance">BLOQUE 0 — Metadatos y alcance</h2>
+<h3 id="para-negocio">Para negocio</h3>
+<p>Esta guía describe cómo cargar <strong>plantillas Excel</strong> y <strong>tablas maestro</strong> en Minerva usando la app de ingesta, SharePoint y los procesos automáticos en Azure.</p>
+<h3 id="alcance">Alcance</h3>
+<table>
+<thead>
+<tr>
+<th>Incluido</th>
+<th>Excluido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Power App, Power Automate, SharePoint</td>
+<td>Procesamiento Bronze (notebooks Databricks)</td>
+</tr>
+<tr>
+<td>ADF <code>MINERVA_Main_pipeline</code> y sub-pipelines</td>
+<td>Detalle interno del job Load Engine</td>
+</tr>
+<tr>
+<td>Wrapper ADF → <code>jobs/run-now</code> Databricks</td>
+<td><code>Transformation_Engine</code> (inactivo en preUAT)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="glosario">Glosario</h3>
+<table>
+<thead>
+<tr>
+<th>Término</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plantilla</strong></td>
+<td>Excel de informe en <code>Plantillas de información</code></td>
+</tr>
+<tr>
+<td><strong>Maestro</strong></td>
+<td>Tabla de referencia en listas SharePoint</td>
+</tr>
+<tr>
+<td><strong>Procesados</strong></td>
+<td>Carpeta en <em>Documentos Consolidados</em> donde PA archiva copia + metadatos</td>
+</tr>
+<tr>
+<td><strong>origen</strong></td>
+<td><code>PLANTILLA</code> o <code>MAESTRO</code> — bifurca en PA (<code>Condition_3</code>) y en ADF</td>
+</tr>
+<tr>
+<td><strong>accion</strong></td>
+<td><code>PROCESS</code>, <code>REPROCESS</code> o <code>DELETE</code> (solo rama plantilla)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="bloque-1-accesos-y-ubicaciones-uat">BLOQUE 1 — Accesos y ubicaciones UAT</h2>
+<h3 id="para-negocio_1">Para negocio</h3>
+<p>Aquí están los enlaces directos a la app, las bibliotecas SharePoint y las listas de configuración. Guárdalos como favoritos para el día a día de UAT.</p>
+<h3 id="accesos-principales">Accesos principales</h3>
+<table>
+<thead>
+<tr>
+<th>Recurso</th>
+<th>URL</th>
+<th>Qué es</th>
+<th>Nombre técnico / ruta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PowerApp de Ingesta</strong></td>
+<td><a href="https://apps.powerapps.com/play/e/default-495d03db-f910-4fcf-9e4c-2cab5fb10e56/a/219fddb2-851a-47b9-a4c7-92dce5697ced?tenantId=495d03db-f910-4fcf-9e4c-2cab5fb10e56">Abrir app UAT</a></td>
+<td>App publicada para usuarios</td>
+<td>Canvas <em>Minerva — Gestión de Cargas</em></td>
+</tr>
+<tr>
+<td><strong>SharePoint de Carga</strong></td>
+<td><a href="https://cemolins.sharepoint.com/sites/MinervaCdG2.0-Test/Documentos%20compartidos/Forms/AllItems.aspx">Documentos compartidos</a></td>
+<td>Biblioteca de trabajo</td>
+<td>Carpeta <strong><code>Plantillas de información/{sociedad}/{ano}/{mes}/{concepto}</code></strong></td>
+</tr>
+<tr>
+<td><strong>SharePoint Consolidado / Histórico</strong></td>
+<td><a href="https://cemolins.sharepoint.com/sites/MinervaCdG2.0-Test/Documentos%20Consolidados/Forms/Agrupado%20Periodo%20%20Area.aspx">Documentos Consolidados</a></td>
+<td>Archivo procesado</td>
+<td>Carpeta <strong><code>Procesados/...</code></strong> (copia PA, rama PLANTILLA)</td>
+</tr>
+<tr>
+<td><strong>Gestión de Cierre de Periodos</strong></td>
+<td><a href="https://cemolins.sharepoint.com/sites/MinervaCdG2.0-Test/Lists/Cierre%20Periodos/AllItems.aspx">Cierre Periodos</a></td>
+<td>Lista de conceptos/plantillas</td>
+<td>Alimenta desplegable concepto (<code>IdPlantilla</code>, <code>Plantilla</code>, <code>Periodo</code>)</td>
+</tr>
+<tr>
+<td><strong>Gestión de Permisos de Procesado</strong></td>
+<td><a href="https://cemolins.sharepoint.com/sites/MinervaCdG2.0-Test/Lists/Test2/AllItems.aspx">MinervaPermisos</a></td>
+<td>Lista de permisos UAT</td>
+<td>En la app: conector <strong><code>MinervaPermisos</code></strong> (ver nota abajo)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="infraestructura-tecnica-referencia">Infraestructura técnica (referencia)</h3>
+<table>
+<thead>
+<tr>
+<th>Recurso</th>
+<th>Ubicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sitio SharePoint base</td>
+<td><code>https://cemolins.sharepoint.com/sites/MinervaCdG2.0-Test</code></td>
+</tr>
+<tr>
+<td>Power Automate</td>
+<td>Flujo <code>PowerAppV2 -&gt; HTTP</code> (ID <code>9388b670-a748-405c-bec8-b8efc5b60cd5</code>)</td>
+</tr>
+<tr>
+<td>Azure Data Factory</td>
+<td><code>datafactory-minerva-dev-002</code> / <code>rg-Minerva-dev-02</code> · pipeline <code>MINERVA_Main_pipeline</code></td>
+</tr>
+<tr>
+<td>ADLS landing</td>
+<td><code>storageminervadev002</code> / contenedor <code>refactoring-minerva-001</code></td>
+</tr>
+<tr>
+<td>Export PA en repo</td>
+<td><a href="../PowerAutomate/PowerAppV2-HTTP_preUAT/"><code>PowerAutomate/PowerAppV2-HTTP_preUAT/</code></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="mapa-de-relaciones">Mapa de relaciones</h3>
+<pre class="mermaid"><code>flowchart LR
+    App[PowerApp UAT] --&gt; PA[PowerAutomate]
+    SP_Carga[Documentos compartidos] --&gt; PI[Plantillas de informacion]
+    PA --&gt;|PLANTILLA| PI
+    PA --&gt;|archiva| SP_Con[Documentos Consolidados]
+    SP_Lista1[Cierre Periodos] --&gt; App
+    SP_Lista3[MaestroSociedades] --&gt; App
+    SP_Lista2[MinervaPermisos] --&gt; App   
+    PA --&gt; ADF[MINERVA_Main_pipeline]
+    ADF --&gt; DBX[Databricks wrapper]</code></pre>
+<hr />
+<h2 id="bloque-2-como-funciona-la-solucion">BLOQUE 2 — Cómo funciona la solución</h2>
+<h3 id="para-negocio_2">Para negocio</h3>
+<p>Abres la app, eliges sociedad, año, mes y concepto, y pulsas un botón:</p>
+<table>
+<thead>
+<tr>
+<th>Botón</th>
+<th>Efecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Procesar</strong></td>
+<td>Primera carga de la plantilla del periodo</td>
+</tr>
+<tr>
+<td><strong>Reprocesar</strong></td>
+<td>Vuelve a cargar tras corregir el Excel</td>
+</tr>
+<tr>
+<td><strong>Borrar</strong></td>
+<td>Elimina datos del periodo en el almacén (no borra el Excel en SP)</td>
+</tr>
+<tr>
+<td><strong>Actualizar Maestros</strong></td>
+<td>Actualiza tablas maestro desde listas SharePoint</td>
+</tr>
+</tbody>
+</table>
+<p>Power Automate valida el Excel <strong>solo</strong> en operaciones de plantilla. Para maestros, lanza Azure directamente.</p>
+<h3 id="swimlane-global">Swimlane global</h3>
+<pre class="mermaid"><code>flowchart TB
+    subgraph APP [Power App]
+        A1[Selectores + RBAC]
+        A2[Run PowerAppV2-HTTP]
+    end
+     subgraph APP-Notifications [Power App]
+        A3[Notify]
+    end
+    subgraph PA [Power Automate]
+        P0{Origen del Dato}
+        P1[Validar Excel + archivar]
+        P3[HTTP]
+        P4[HTTP]
+    end
+    subgraph ADF [MINERVA_Main_pipeline]
+        D1{origen?}
+        D2[Minerva_sharepoint_to_blob]
+        D3[Minerva_sharepoint_to_blob_lists]
+        D4[Load_Engine]
+    end
+    subgraph DBX [Databricks]
+        X1[jobs run-now]
+    end
+    A1 --&gt; A2 --&gt; P0
+    P0 --&gt;|PLANTILLA| P1 --&gt; P3 --&gt; D1
+    P0 --&gt;|MAESTRO| P4 --&gt; D1
+    P1 --&gt;|Error| A3
+    D1 --&gt;|PLANTILLA| D2 --&gt; D4
+    D1 --&gt;|MAESTRO| D3 --&gt; D4
+    D4 --&gt; X1
+    P3 --&gt; |Success| A3
+    P4 --&gt; |Success| A3</code></pre>
+<h3 id="narrativa-del-recorrido-completo">Narrativa del recorrido completo</h3>
+<p>Imagina que un usuario de finanzas quiere cargar el P&amp;L de junio de CMSA:</p>
+<ol>
+<li><strong>App:</strong> abre la Power App UAT, elige región/país/sociedad, año <code>2026</code>, mes <code>06</code>, concepto <code>PL</code> y pulsa <strong>Procesar</strong>. La app comprueba permisos en la lista de permisos y que los cuatro desplegables están rellenos.</li>
+<li><strong>Power Automate:</strong> recibe ocho parámetros. Como <code>origen=PLANTILLA</code>, entra en la rama larga: busca el Excel en SharePoint, exige que haya exactamente uno, lo copia a <em>Procesados</em> con metadatos y llama a ADF.</li>
+<li><strong>ADF orquestador:</strong> valida parámetros, ejecuta el sub-pipeline de plantillas (lee el mismo Excel desde <code>Plantillas de información</code> y lo deja en ADLS) y construye un JSON con la ruta del blob.</li>
+<li><strong>ADF wrapper:</strong> dispara el job Databricks Load Engine con ese JSON.</li>
+<li><strong>App:</strong> muestra notificación verde con el mensaje devuelto por Power Automate.</li>
+</ol>
+<p>Si el mismo usuario pulsa <strong>Actualizar Maestros</strong>, los pasos 2 y 3 cambian: Power Automate <strong>no toca SharePoint</strong> y ADF ingiere las diez listas maestro en lugar del Excel.</p>
+<h3 id="secuencia-temporal-global">Secuencia temporal global</h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as Usuario
+    participant App as PowerApp
+    participant PA as PowerAutomate
+    participant SP as SharePoint
+    participant Main as MINERVA_Main_pipeline
+    participant Sub as Subpipeline ingesta
+    participant DBX as Databricks wrapper
+
+    U-&gt;&gt;App: Elige parametros y pulsa accion
+    App-&gt;&gt;App: Valida permisos y campos
+    App-&gt;&gt;PA: Run 8 parametros
+    PA-&gt;&gt;PA: Condition_3 por origen
+    alt origen PLANTILLA
+        PA-&gt;&gt;SP: Validar y archivar Excel
+        alt fichero invalido
+            PA--&gt;&gt;App: ERROR + message
+            App--&gt;&gt;U: Notify rojo
+        else fichero OK
+            PA-&gt;&gt;Main: HTTP createRun
+        end
+    else origen MAESTRO
+        PA-&gt;&gt;Main: HTTP_2 createRun
+    end
+    Main-&gt;&gt;Main: Validaciones origen
+    alt PLANTILLA
+        Main-&gt;&gt;Sub: minerva_sharepoint_to_blob
+        Sub-&gt;&gt;SP: Lee Excel Plantillas de informacion
+        Sub--&gt;&gt;Main: filePath
+    else MAESTRO
+        Main-&gt;&gt;Sub: minerva_sharepoint_to_blob_lists
+        Sub-&gt;&gt;SP: Export listas maestro
+        Sub--&gt;&gt;Main: items o listaFolder
+    end
+    Main-&gt;&gt;Main: Set var_load_engine_params
+    Main-&gt;&gt;DBX: Load_Engine Params JSON
+    DBX-&gt;&gt;DBX: jobs run-now
+    opt PLANTILLA con Respond PA
+        PA--&gt;&gt;App: SUCCESS
+        App--&gt;&gt;U: Notify verde
+    end</code></pre>
+<hr />
+<h2 id="bloque-3-configuracion-y-prerequisitos">BLOQUE 3 — Configuración y prerequisitos</h2>
+<h3 id="permisos-de-usuario-lista-test2-minervapermisos">Permisos de usuario (lista Test2 / MinervaPermisos)</h3>
+<ol>
+<li>Abrir <a href="https://cemolins.sharepoint.com/sites/MinervaCdG2.0-Test/Lists/Test2/AllItems.aspx">Gestión de Permisos</a>.</li>
+<li>Crear fila con <strong>Title</strong> = email del usuario (ej. <code>usuario@molins.es</code>).</li>
+<li>En columna de acción, asignar uno o más valores:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Valor en lista</th>
+<th>Botón en app</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Procesar</code></td>
+<td>Procesar</td>
+</tr>
+<tr>
+<td><code>Reprocesar</code></td>
+<td>Reprocesar</td>
+</tr>
+<tr>
+<td><code>Borrar</code></td>
+<td>Borrar</td>
+</tr>
+<tr>
+<td><code>ActualizarMaestros</code></td>
+<td>Actualizar Maestros</td>
+</tr>
+</tbody>
+</table>
+<p>Sin fila → botones en gris (<code>DisplayMode.Disabled</code>).</p>
+<h3 id="preparacion-sharepoint-solo-plantilla">Preparación SharePoint (solo PLANTILLA)</h3>
+<p>En <a href="https://cemolins.sharepoint.com/sites/MinervaCdG2.0-Test/Documentos%20compartidos/Forms/AllItems.aspx">SharePoint de Carga</a>, ruta:</p>
+<p><code>Plantillas de información / {sociedad} / {ano} / {mes} / {concepto} /</code></p>
+<p>Debe haber <strong>exactamente un</strong> fichero <code>.xlsx</code>.</p>
+<h3 id="importacion-y-publicacion-de-la-app">Importación y publicación de la app</h3>
+<ol>
+<li><a href="https://make.powerapps.com/">Power Apps</a> → Import → <a href="../PowerApps/ADF%20File%20Processing%20App_preUAT.msapp"><code>ADF File Processing App_preUAT.msapp</code></a>.</li>
+<li>Reconfigurar conexiones: SharePoint (listas y bibliotecas), Databricks (<code>log_table_execution</code>), flujo <code>PowerAppV2-&gt;HTTP</code>.</li>
+<li>Publicar y compartir con grupo UAT.</li>
+<li>Probar los cuatro botones.</li>
+</ol>
+<h3 id="quien-configura-que">Quién configura qué</h3>
+<table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Componente</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Admin SharePoint</td>
+<td>Test2, Cierre Periodos, bibliotecas</td>
+<td>Permisos y estructura carpetas</td>
+</tr>
+<tr>
+<td>Admin Power Platform</td>
+<td>Canvas app + flujo PA</td>
+<td>Import, conexiones, publicación</td>
+</tr>
+<tr>
+<td>Admin ADF</td>
+<td>Factory, pipelines, global parameters</td>
+<td>Despliegue JSON preUAT</td>
+</tr>
+<tr>
+<td>Admin Databricks</td>
+<td>Job Load Engine ID</td>
+<td>Alinear <code>LoadEngineJobId</code> en main</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="bloque-4-power-app">BLOQUE 4 — Power App</h2>
+<h3 id="para-negocio_3">Para negocio</h3>
+<p>Pantalla <strong>Minerva — Gestión de Cargas</strong>: desplegables en cascada (región → país → sociedad → año → mes → concepto) y cuatro botones de acción. El panel muestra estado de la última ejecución.</p>
+<h3 id="detalle-tecnico">Detalle técnico</h3>
+<table>
+<thead>
+<tr>
+<th>Propiedad</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Artefacto repo</td>
+<td><a href="../PowerApps/ADF%20File%20Processing%20App_preUAT.msapp"><code>ADF File Processing App_preUAT.msapp</code></a></td>
+</tr>
+<tr>
+<td>App publicada UAT</td>
+<td>Ver <a href="#bloque-1-accesos-y-ubicaciones-uat">BLOQUE 1</a></td>
+</tr>
+<tr>
+<td>Pantalla principal</td>
+<td><code>Gestión_Cargas</code> (1366×768)</td>
+</tr>
+<tr>
+<td>Flujo invocado</td>
+<td><code>PowerAppV2-&gt;HTTP</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="matriz-boton-parametros">Matriz botón → parámetros</h3>
+<table>
+<thead>
+<tr>
+<th>Botón</th>
+<th><code>accion</code></th>
+<th><code>origen</code></th>
+<th>Rama PA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Procesar</td>
+<td><code>PROCESS</code></td>
+<td><code>PLANTILLA</code></td>
+<td>SharePoint + HTTP</td>
+</tr>
+<tr>
+<td>Reprocesar</td>
+<td><code>REPROCESS</code></td>
+<td><code>PLANTILLA</code></td>
+<td>SharePoint + HTTP</td>
+</tr>
+<tr>
+<td>Borrar</td>
+<td><code>DELETE</code></td>
+<td><code>PLANTILLA</code></td>
+<td>SharePoint + HTTP</td>
+</tr>
+<tr>
+<td>Actualizar Maestros</td>
+<td><code>PROCESS</code></td>
+<td><code>MAESTRO</code></td>
+<td>Solo <code>HTTP_2</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="selectores">Selectores</h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Fuente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ddConcepto</code></td>
+<td>Lista <strong>Cierre Periodos</strong> (excluye <code>KPI*</code>)</td>
+</tr>
+<tr>
+<td><code>ddRegion</code> / <code>ddPais</code> / <code>ddSociedad</code></td>
+<td><strong>MaestroSociedades</strong></td>
+</tr>
+<tr>
+<td><code>ddAno</code> / <code>ddMes</code></td>
+<td>Derivados de <code>Periodo</code> en Cierre Periodos</td>
+</tr>
+</tbody>
+</table>
+<h3 id="invocacion-power-automate-8-parametros">Invocación Power Automate (8 parámetros)</h3>
+<div class="highlight"><pre><span></span><code>&#39;PowerAppV2-&gt;HTTP&#39;.Run(
+    ddSociedad.Selected.Value,
+    ddAno.Selected.Value,
+    ddMes.Selected.Value,
+    ddConcepto.Selected.IdPlantilla,
+    &quot;PROCESS&quot;,           // o REPROCESS / DELETE
+    &quot;PLANTILLA&quot;,         // o MAESTRO
+    ddConcepto.Selected.Plantilla,
+    User().Email
+);
+</code></pre></div>
+<p>Tras <code>Run</code>, la app evalúa <code>varFlowResponse.status</code> y muestra <code>Notify</code> (excepto Actualizar Maestros: Notify fijo).</p>
+<h3 id="panel-de-estado">Panel de estado</h3>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Fuente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lblStatus</code></td>
+<td>Databricks <code>data_control.log_table_execution</code></td>
+</tr>
+<tr>
+<td><code>lblLastExec_1</code></td>
+<td>Duración ejecución (parcial)</td>
+</tr>
+<tr>
+<td><code>Detalles_Ejecución</code></td>
+<td>Pantalla WIP — no usar en UAT</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diagrama-journey-en-la-pantalla-principal">Diagrama — journey en la pantalla principal</h3>
+<pre class="mermaid"><code>flowchart TB
+    START[Usuario abre PowerApp UAT] --&gt; ONSTART[OnStart carga permisos y conceptos]
+    ONSTART --&gt; SEL[Usuario rellena cascada region pais sociedad ano mes concepto]
+    SEL --&gt; PERM{Tiene permiso para la accion?}
+    PERM --&gt;|No| DIS[Boton deshabilitado]
+    PERM --&gt;|Si| BTN[Pulsa Procesar Reprocesar Borrar o Maestros]
+    BTN --&gt; VAL{Campos obligatorios OK?}
+    VAL --&gt;|No| MSG1[Notify Debe informar todos los parametros]
+    VAL --&gt;|Si| MODAL{Reprocesar o Borrar?}
+    MODAL --&gt;|Si| CONF[Modal confirmacion]
+    MODAL --&gt;|No| RUN
+    CONF --&gt; RUN[PowerAppV2-HTTP.Run]
+    RUN --&gt; WAIT[Espera respuesta PA]
+    WAIT --&gt; NTF[Notify segun status]</code></pre>
+<h3 id="narrativa-que-hace-la-app-antes-de-llamar-a-azure">Narrativa — qué hace la app antes de llamar a Azure</h3>
+<p>La app <strong>no</strong> copia ficheros ni llama a ADF directamente. Su papel es:</p>
+<ol>
+<li><strong>Gobernar quién puede hacer qué</strong> leyendo la lista de permisos al iniciar.</li>
+<li><strong>Ofrecer solo combinaciones válidas</strong> de sociedad, periodo y concepto desde listas SharePoint maestras.</li>
+<li><strong>Empaquetar la decisión del usuario</strong> en ocho parámetros y delegar en Power Automate.</li>
+<li><strong>Traducir la respuesta</strong> del flujo (o un mensaje fijo en Maestros) en una notificación visible.</li>
+</ol>
+<hr />
+<h2 id="bloque-5-power-automate">BLOQUE 5 — Power Automate</h2>
+<h3 id="para-negocio_4">Para negocio</h3>
+<p>Power Automate es el <strong>intermediario</strong> entre la app y Azure. Cuando pulsas Procesar, Reprocesar o Borrar, primero <strong>comprueba que el Excel está bien puesto</strong> en SharePoint, <strong>deja una copia archivada</strong> con tus datos (sociedad, periodo, usuario) y <strong>entonces</strong> pide a Azure que procese. Cuando pulsas Actualizar Maestros, <strong>salta</strong> esa parte de SharePoint y pide directamente a Azure que actualice las tablas maestro.</p>
+<table>
+<thead>
+<tr>
+<th><code>origen</code></th>
+<th>Botones</th>
+<th>Qué hace PA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PLANTILLA</code></td>
+<td>Procesar, Reprocesar, Borrar</td>
+<td>Validar 1 Excel → archivar en <em>Procesados</em> → lanzar ADF → responder a la app</td>
+</tr>
+<tr>
+<td><code>MAESTRO</code></td>
+<td>Actualizar Maestros</td>
+<td>Lanzar ADF directamente (<code>HTTP_2</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Importante:</strong> ADF lee el Excel desde <strong><code>Plantillas de información</code></strong>, no desde la copia de <em>Procesados</em>. La copia es registro documental.</p>
+<h3 id="identidad-del-flujo">Identidad del flujo</h3>
+<table>
+<thead>
+<tr>
+<th>Propiedad</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nombre</td>
+<td><code>PowerAppV2 -&gt; HTTP</code></td>
+</tr>
+<tr>
+<td>Flow ID</td>
+<td><code>9388b670-a748-405c-bec8-b8efc5b60cd5</code></td>
+</tr>
+<tr>
+<td>Export repo</td>
+<td><a href="../PowerAutomate/PowerAppV2-HTTP_preUAT/"><code>PowerAutomate/PowerAppV2-HTTP_preUAT/</code></a></td>
+</tr>
+<tr>
+<td>Factory destino</td>
+<td><code>datafactory-minerva-dev-002</code></td>
+</tr>
+<tr>
+<td>Pipeline HTTP</td>
+<td><code>MINERVA_Main_pipeline</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="diagrama-general-bifurcacion-por-origen">Diagrama general — bifurcación por <code>origen</code></h3>
+<p>La <strong>primera acción</strong> tras el trigger es <code>Condition_3</code>: comprueba si el parámetro <code>origen</code> (<code>text_5</code>) es igual a <code>"PLANTILLA"</code>.</p>
+<pre class="mermaid"><code>flowchart TD
+    T[Power Apps calls PowerAutomate flow] --&gt; C3{Parámetro Origen}
+    C3 --&gt;|PLANTILLA| C1[Compose ruta origen]
+    C1 --&gt; GF[Direcory File Count]
+    GF --&gt; COND{Count ficheros = 1?}
+    COND --&gt;|Si| RAMA_OK[Rama copia y metadatos]
+    RAMA_OK --&gt; HTTP[HTTP Run MINERVA_Main]
+    HTTP --&gt; RESP[Respond SUCCESS a la app]
+    COND --&gt;|No| COND2{length = 0?}
+    COND2 --&gt;|Si| E1[Respond ERROR no encontrado]
+    COND2 --&gt;|No| E2[Respond ERROR multiples ficheros]
+    C3 --&gt;|MAESTRO| HTTP2[HTTP Run MINERVA_Main]</code></pre>
+<h3 id="diagrama-detallado-cuando-origenplantilla">Diagrama detallado — cuando <code>origen=PLANTILLA</code></h3>
+<pre class="mermaid"><code>flowchart TD
+    subgraph trigger [Entrada]
+        T1[Trigger 8 parametros]
+        T2[Compose Source folder path]
+        T3[Get files properties only]
+    end
+    subgraph validacion [Validacion fichero unico]
+        V1{Exactamente 1 fichero?}
+        V2{0 ficheros?}
+        R1[Respond ERROR no encontrado]
+        R2[Respond ERROR multiples]
+    end
+    subgraph copia [Copia y metadatos SharePoint]
+        C1[Compose Source file id y nombre]
+        C2[Compose rutas destino Procesados]
+        C3[Create new folder]
+        C4[Get file content]
+        C5[Get file metadata destino]
+        C6{Existe en destino?}
+        C7[Update file]
+        C8[Create file]
+        C9[Get file metadata path 2]
+        C10[Update file properties]
+    end
+    subgraph adf [Llamada Azure]
+        H1[HTTP POST createRun]
+        R3[Respond SUCCESS]
+    end
+    T1 --&gt; T2 --&gt; T3 --&gt; V1
+    V1 --&gt;|No| V2
+    V2 --&gt;|Si| R1
+    V2 --&gt;|No| R2
+    V1 --&gt;|Si| C1 --&gt; C2 --&gt; C3 --&gt; C4 --&gt; C5 --&gt; C6
+    C6 --&gt;|Si| C7 --&gt; C9
+    C6 --&gt;|No| C8 --&gt; C9
+    C9 --&gt; C10 --&gt; H1 --&gt; R3</code></pre>
+<h3 id="rama-plantilla">Rama PLANTILLA</h3>
+<table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Acción PA</th>
+<th>Qué ocurre en lenguaje claro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Trigger Power Apps V2</strong></td>
+<td>Llegan sociedad, año, mes, concepto, acción, origen, nombre plantilla y email usuario</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Compose — Source folder</strong></td>
+<td>Se construye la ruta <code>Plantillas de información/CMSA/2026/06/PL</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Get files</strong></td>
+<td>SharePoint lista los ficheros de esa carpeta (solo metadatos)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Condition</strong></td>
+<td>Si hay <strong>un solo</strong> fichero, continúa; si no, va al paso de error</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Condition 2</strong></td>
+<td>Cero ficheros → <em>“No se ha encontrado ningún fichero…”</em>; más de uno → <em>“…más de un fichero…”</em></td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Compose id/nombre</strong></td>
+<td>Identifica el Excel único a copiar</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Compose rutas destino</strong></td>
+<td>Prepara <code>Procesados/CMSA/2026/06/PL</code> en <em>Documentos Consolidados</em></td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Create new folder</strong></td>
+<td>Crea la carpeta destino si no existe</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Get file content</strong></td>
+<td>Lee el contenido binario del Excel origen</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Get file metadata</strong></td>
+<td>Comprueba si ya hay un fichero con el mismo nombre en destino</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Update file</strong> o <strong>Create file</strong></td>
+<td>Sobrescribe o crea el Excel en <em>Procesados</em></td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>Update file properties</strong></td>
+<td>Rellena columnas: Sociedad, Año, Periodo (<code>06-2026</code>), Concepto, Usuario</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>HTTP</strong></td>
+<td>POST a <code>.../MINERVA_Main_pipeline/createRun</code> con sociedad, periodo, concepto, acción y origen</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>Respond to Power App</strong></td>
+<td>Devuelve <code>{ status: SUCCESS, message: "Proceso lanzado correctamente…" }</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="diagrama-rama-maestro">Diagrama — rama MAESTRO</h3>
+<pre class="mermaid"><code>flowchart LR
+    T[Trigger PowerApps] --&gt; C3{Origen}
+    C3 --&gt;|MAESTRO| H2[HTTP_2 createRun]
+    H2 --&gt; ADF[MINERVA_Main_pipeline]
+    Note1[Sin pasos SharePoint]
+    Note2[Sin Respond to Power Apps en export actual]</code></pre>
+<h3 id="rama-maestro">Rama MAESTRO</h3>
+<ol>
+<li>La app envía <code>origen=MAESTRO</code> (botón Actualizar Maestros).</li>
+<li><code>Condition_3</code> evalúa false → se ejecuta solo <strong><code>HTTP_2</code></strong>.</li>
+<li>El body es idéntico al de la rama plantilla (incluye sociedad, periodo, etc., aunque ADF en rama maestro use sobre todo <code>origen</code> y <code>listaNombres</code> por defecto).</li>
+<li><strong>No hay</strong> validación de Excel ni copia a <em>Procesados</em>.</li>
+<li><strong>No hay</strong> respuesta estructurada a la app; la canvas app muestra un Notify fijo de éxito.</li>
+</ol>
+<h3 id="secuencia-comparativa-plantilla-vs-maestro">Secuencia — comparativa PLANTILLA vs MAESTRO</h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant App as PowerApp
+    participant PA as PowerAutomate
+    participant SP as SharePoint
+    participant ADF as MINERVA_Main
+
+    Note over App,ADF: Rama PLANTILLA
+    App-&gt;&gt;PA: Run origen PLANTILLA accion PROCESS
+    PA-&gt;&gt;SP: Get files + copia Procesados
+    PA-&gt;&gt;ADF: HTTP createRun
+    ADF--&gt;&gt;PA: runId
+    PA--&gt;&gt;App: status SUCCESS message
+
+    Note over App,ADF: Rama MAESTRO
+    App-&gt;&gt;PA: Run origen MAESTRO
+    PA-&gt;&gt;ADF: HTTP_2 createRun
+    ADF--&gt;&gt;PA: runId
+    Note over PA,App: Sin Respond PA</code></pre>
+<h3 id="rutas-sharepoint-en-power-automate">Rutas SharePoint en Power Automate</h3>
+<table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Ruta</th>
+<th>Biblioteca</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Origen lectura PA y ADF</td>
+<td><code>Plantillas de información/{soc}/{ano}/{mes}/{concepto}/</code></td>
+<td>Documentos compartidos</td>
+</tr>
+<tr>
+<td>Destino archivado PA</td>
+<td><code>Procesados/{soc}/{ano}/{mes}/{concepto}/</code></td>
+<td>Documentos Consolidados</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart LR
+    subgraph SP [SharePoint MinervaCdG2.0-Test]
+        PI[Plantillas de informacion]
+        PR[Procesados en Documentos Consolidados]
+    end
+    PA[Power Automate PLANTILLA] --&gt;|lee y valida| PI
+    PA --&gt;|archiva metadatos| PR
+    ADF[ADF plantillas] --&gt;|lee xlsx para ADLS| PI</code></pre>
+<h3 id="contrato-http-hacia-adf">Contrato HTTP hacia ADF</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;sociedad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CMSA&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;ano&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;mes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;06&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;concepto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PL&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;accion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PROCESS&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;origen&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PLANTILLA&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Campo PA</th>
+<th>Parámetro ADF</th>
+<th>Notas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>origen</td>
+<td><code>origen</code></td>
+<td>Bifurca main ADF</td>
+</tr>
+<tr>
+<td>—</td>
+<td><code>listaNombres</code></td>
+<td>Default main (10 maestros) si MAESTRO</td>
+</tr>
+<tr>
+<td>—</td>
+<td><code>catalog</code></td>
+<td>Default <code>dev</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="mensajes-pa">Mensajes PA</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Texto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Éxito</td>
+<td><em>Proceso lanzado correctamente. El fichero se ha copiado y se ha invocado el procesamiento.</em></td>
+</tr>
+<tr>
+<td>Error</td>
+<td><em>No se ha encontrado ningún fichero…</em> / <em>…más de un fichero…</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="bloque-6-flujos-de-negocio">BLOQUE 6 — Flujos de negocio</h2>
+<h3 id="antes-de-pulsar">Antes de pulsar</h3>
+<p><strong>PLANTILLA (Procesar / Reprocesar / Borrar):</strong> permiso en MinervaPermisions, procesa Excel en carpeta plantilla.</p>
+<p><strong>MAESTRO (Actualizar Maestros):</strong> permiso ActualizarMaestros.</p>
+<hr />
+<h3 id="61-procesar">6.1 — Procesar</h3>
+<p><strong>Para negocio:</strong> primera carga de la plantilla del periodo. Debes tener el Excel en SharePoint antes de pulsar.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as Usuario
+    participant App as App
+    participant PA as PowerAutomate
+    participant SP as SharePoint
+    participant ADF as Azure
+
+    U-&gt;&gt;App: Rellena CMSA 2026 06 PL
+    U-&gt;&gt;App: Pulsa Procesar
+    App-&gt;&gt;PA: PROCESS + PLANTILLA
+    PA-&gt;&gt;SP: Valida 1 Excel
+    PA-&gt;&gt;SP: Copia a Procesados
+    PA-&gt;&gt;ADF: createRun accion PROCESS
+    ADF-&gt;&gt;ADF: Copia Excel a ADLS
+    ADF-&gt;&gt;ADF: Load_Engine Databricks
+    PA--&gt;&gt;App: SUCCESS
+    App--&gt;&gt;U: Notify verde</code></pre>
+<p><strong>Narrativa:</strong> Power Automate confirma que el fichero existe y es único, lo archiva con tus metadatos y pide a Azure un <strong>PROCESS</strong>. ADF copia el Excel al landing y arranca el job de carga.</p>
+<hr />
+<h3 id="62-reprocesar">6.2 — Reprocesar</h3>
+<p><strong>Para negocio:</strong> mismo recorrido que Procesar, pero tras corregir el Excel en SharePoint. La app pide confirmación en un modal.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Procesar</th>
+<th>Reprocesar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Confirmación</td>
+<td>No</td>
+<td>Modal sí</td>
+</tr>
+<tr>
+<td><code>accion</code> enviada</td>
+<td><code>PROCESS</code></td>
+<td><code>REPROCESS</code></td>
+</tr>
+<tr>
+<td>Power Automate</td>
+<td>Rama PLANTILLA completa</td>
+<td>Igual</td>
+</tr>
+<tr>
+<td>Efecto en ADLS</td>
+<td>Sobrescribe activo</td>
+<td>Archiva deprecado → borra → recopia</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart LR
+    U[Usuario corrige Excel en SP] --&gt; BTN[Pulsa Reprocesar]
+    BTN --&gt; MOD[Modal confirmacion]
+    MOD --&gt; PA[PA valida y archiva]
+    PA --&gt; ADF[ADF accion REPROCESS]
+    ADF --&gt; ADLS[Archiva blob viejo y recopia]</code></pre>
+<hr />
+<h3 id="63-borrar">6.3 — Borrar</h3>
+<p><strong>Para negocio:</strong> elimina los datos del periodo en el almacén de datos. <strong>No</strong> borra el Excel de SharePoint. Power Automate <strong>sigue exigiendo</strong> un Excel en la carpeta (misma validación que Procesar).</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as Usuario
+    participant App as App
+    participant PA as PowerAutomate
+    participant ADF as Azure
+
+    U-&gt;&gt;App: Pulsa Borrar + confirma
+    App-&gt;&gt;PA: DELETE + PLANTILLA
+    PA-&gt;&gt;PA: Valida Excel en SP igual que Procesar
+    PA-&gt;&gt;ADF: createRun accion DELETE
+    ADF-&gt;&gt;ADF: Archiva y borra blob activo
+    PA--&gt;&gt;App: SUCCESS o ERROR</code></pre>
+<hr />
+<h3 id="64-actualizar-maestros">6.4 — Actualizar Maestros</h3>
+<p><strong>Para negocio:</strong> refresca las tablas de referencia (sociedades, productos, monedas, etc.) desde las listas SharePoint. <strong>No necesitas</strong> subir un Excel.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as Usuario
+    participant App as App
+    participant PA as PowerAutomate
+    participant ADF as Azure
+    participant SP as SharePoint Lists
+
+    U-&gt;&gt;App: Pulsa Actualizar Maestros
+    App-&gt;&gt;PA: PROCESS + MAESTRO
+    PA-&gt;&gt;PA: Condition_3 false salta SP ficheros
+    PA-&gt;&gt;ADF: HTTP_2 origen MAESTRO
+    ADF-&gt;&gt;SP: Export 10 listas maestro
+    ADF-&gt;&gt;ADF: JSON en ADLS Maestros
+    ADF-&gt;&gt;ADF: Load_Engine
+    App--&gt;&gt;U: Notify fijo exito</code></pre>
+<hr />
+<h3 id="mensajes-al-usuario">Mensajes al usuario</h3>
+<table>
+<thead>
+<tr>
+<th>Mensaje</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Verde <em>Proceso lanzado…</em></td>
+<td>OK; revisar panel estado</td>
+</tr>
+<tr>
+<td>Rojo <em>No se ha encontrado…</em></td>
+<td>Subir Excel a ruta correcta</td>
+</tr>
+<tr>
+<td>Rojo <em>más de un fichero…</em></td>
+<td>Dejar solo un <code>.xlsx</code></td>
+</tr>
+<tr>
+<td><em>Debe informar todos los parámetros</em></td>
+<td>Completar desplegables</td>
+</tr>
+<tr>
+<td>Botón gris</td>
+<td>Pedir acceso en Test2/MinervaPermisos</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="bloque-7-azure-data-factory">BLOQUE 7 — Azure Data Factory</h2>
+<h3 id="para-negocio_5">Para negocio</h3>
+<p>Azure Data Factory es el <strong>motor de integración</strong> en la nube. Recibe la orden desde Power Automate, <strong>copia los datos</strong> desde SharePoint al almacén de ficheros (ADLS) y <strong>lanza el procesamiento</strong> en Databricks. Tú no interactúas con ADF directamente; lo disparas desde la app.</p>
+<h3 id="vista-de-pipelines-como-encajan">Vista de pipelines — cómo encajan</h3>
+<pre class="mermaid"><code>flowchart TB
+    PA[Power Automate HTTP] --&gt; MAIN[MINERVA_Main_pipeline]
+    MAIN --&gt;|origen PLANTILLA| PIP_PLANT[minerva_sharepoint_to_blob]
+    MAIN --&gt;|origen MAESTRO| PIP_MAES[minerva_sharepoint_to_blob_lists]
+    PIP_PLANT --&gt; ADLS_PLANT[ADLS Plantillas]
+    PIP_PLANT --&gt; SET[Set var_load_engine_params]
+    PIP_MAES --&gt; ADLS_MAES[ADLS Maestros]
+    PIP_MAES --&gt; SET
+    SET --&gt; LE[Load_Engine]
+    LE --&gt; WRAP[Databricks Job with Params]
+    WRAP --&gt; DBX[Databricks jobs run-now]</code></pre>
+<hr />
+<h3 id="71-orquestador-minerva_main_pipeline">7.1 — Orquestador <code>MINERVA_Main_pipeline</code></h3>
+<p>Artefacto: <a href="../Final_ADF_Pipelines/Orquestración/0_MINERVA_Main_pipeline_preUAT.json"><code>0_MINERVA_Main_pipeline_preUAT.json</code></a></p>
+<p><strong>Narrativa:</strong> es el <strong>director de orquesta</strong>. No copia ficheros él mismo: valida que los parámetros tienen sentido, delega en el sub-pipeline correcto según <code>origen</code>, recoge el resultado (ruta del blob o lista de maestros) y construye un JSON único (<code>var_load_engine_params</code>) para el job Databricks.</p>
+<h3 id="diagrama-de-validaciones-y-ramas">Diagrama de validaciones y ramas</h3>
+<pre class="mermaid"><code>flowchart TB
+    START[Inicio createRun desde PA] --&gt; V1{origen vacio?}
+    V1 --&gt;|Si| F1[Fail EMPTY_ORIGEN]
+    V1 --&gt;|No| V2{origen MAESTRO o PLANTILLA?}
+    V2 --&gt;|No| F2[Fail INVALID_ORIGEN]
+    V2 --&gt;|Si| V3{origen = MAESTRO?}
+    V3 --&gt;|Si| V3B{listaNombres vacio?}
+    V3B --&gt;|Si| F3[Fail EMPTY_LISTA_NOMBRES]
+    V3B --&gt;|No| RUN_M[Execute minerva_sharepoint_to_blob_lists]
+    RUN_M --&gt; SET_M[Set var_load_engine_params MAESTRO]
+    V3 --&gt;|No PLANTILLA| V4{sociedad ano mes concepto accion OK?}
+    V4 --&gt;|No| F4[Fail PLANTILLA_MISSING]
+    V4 --&gt;|Si| RUN_P[Execute minerva_sharepoint_to_blob]
+    RUN_P --&gt; SET_P[Set var_load_engine_params PLANTILLA]
+    SET_M --&gt; LE[Load_Engine]
+    SET_P --&gt; LE
+    LE --&gt; WRAP[Databricks Job with Params]
+    WRAP --&gt; END[Fin run ADF]</code></pre>
+<table>
+<thead>
+<tr>
+<th><code>origen</code></th>
+<th>Sub-pipeline</th>
+<th>Qué produce</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PLANTILLA</code></td>
+<td><code>minerva_sharepoint_to_blob</code></td>
+<td><code>filePath</code> del Excel en ADLS</td>
+</tr>
+<tr>
+<td><code>MAESTRO</code></td>
+<td><code>minerva_sharepoint_to_blob_lists</code></td>
+<td>Rutas JSON por lista maestro</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Parámetros clave:</strong> <code>origen</code>, <code>sociedad</code>, <code>ano</code>, <code>mes</code>, <code>concepto</code>, <code>accion</code>, <code>listaNombres</code>, <code>catalog</code> (default <code>dev</code>), <code>LoadEngineJobId</code> (default <code>1097709261114096</code>).</p>
+<p><strong>Errores:</strong> <code>EMPTY_ORIGEN</code>, <code>INVALID_ORIGEN</code>, <code>EMPTY_LISTA_NOMBRES</code>, parámetros PLANTILLA incompletos.</p>
+<hr />
+<h3 id="72-plantillas-excel-minerva_sharepoint_to_blob">7.2 — Plantillas Excel (<code>minerva_sharepoint_to_blob</code>)</h3>
+<p>Artefacto: <a href="../Final_ADF_Pipelines/Plantillas/minerva_sharepoint_to_blob_preUAT.json"><code>minerva_sharepoint_to_blob_preUAT.json</code></a></p>
+<p><strong>Narrativa:</strong> este pipeline <strong>lee el Excel desde SharePoint</strong> (carpeta <code>Plantillas de información</code>, la misma que validó Power Automate) y lo <strong>deja en ADLS</strong> bajo <code>refactoring-minerva-001/Plantillas/</code>. La acción (<code>PROCESS</code>, <code>REPROCESS</code>, <code>DELETE</code>) define si copia, recopia tras archivar o solo borra en el almacén.</p>
+<h3 id="diagrama-por-accion">Diagrama por acción</h3>
+<pre class="mermaid"><code>flowchart TD
+    START[Inicio con sociedad ano mes concepto accion] --&gt; OAUTH[Token OAuth Graph]
+    OAUTH --&gt; SITE[Resolver sitio MinervaCdG2.0-Test]
+    SITE --&gt; LIST[Listar xlsx en carpeta concepto]
+    LIST --&gt; FOUND{Hay xlsx?}
+    FOUND --&gt;|No| FAIL[Fail SP_FILE_NOT_FOUND]
+    FOUND --&gt;|Si| ACT{accion?}
+    ACT --&gt;|PROCESS| COPY[Copiar a ADLS activo]
+    ACT --&gt;|REPROCESS| DEP1[Archivar activo deprecated]
+    DEP1 --&gt; DEL1[Borrar activo]
+    DEL1 --&gt; COPY
+    ACT --&gt;|DELETE| DEP2[Archivar activo deprecated]
+    DEP2 --&gt; DEL2[Borrar activo sin recopia]
+    COPY --&gt; RET[Set pipelineReturnValue filePath]
+    DEL2 --&gt; RET</code></pre>
+<table>
+<thead>
+<tr>
+<th><code>accion</code></th>
+<th>Efecto en ADLS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PROCESS</code></td>
+<td>Copia / sobrescribe blob activo</td>
+</tr>
+<tr>
+<td><code>REPROCESS</code></td>
+<td>Renombra activo a <code>_deprecated_on_{timestamp}</code> → borra → recopia desde SP</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td>Renombra activo a deprecado → borra (sin recopia)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rutas:</strong></p>
+<ul>
+<li><strong>Origen SP:</strong> <code>Plantillas de información/{sociedad}/{ano}/{mes}/{concepto}/</code></li>
+<li><strong>Destino ADLS:</strong> <code>refactoring-minerva-001/Plantillas/{sociedad}_{concepto}_{ano}_{mes}_{base}.xlsx</code></li>
+</ul>
+<hr />
+<h3 id="73-maestros-listas-minerva_sharepoint_to_blob_lists">7.3 — Maestros listas (<code>minerva_sharepoint_to_blob_lists</code>)</h3>
+<p>Artefacto: <a href="../Final_ADF_Pipelines/Maestros/pl_minerva_sharepoint_to_blob_lists_preUAT.json"><code>pl_minerva_sharepoint_to_blob_lists_preUAT.json</code></a></p>
+<p><strong>Narrativa:</strong> cuando <code>origen=MAESTRO</code>, este pipeline exporta <strong>cada lista SharePoint</strong> del array <code>listaNombres</code> (diez por defecto) a ficheros JSON en ADLS. Por cada maestro genera el JSON de datos y el JSON de columnas.</p>
+<h3 id="diagrama-foreach-listas">Diagrama ForEach listas</h3>
+<pre class="mermaid"><code>flowchart TD
+    START[Inicio listaNombres] --&gt; OAUTH[Token OAuth Graph]
+    OAUTH --&gt; VAL{listaNombres vacio?}
+    VAL --&gt;|Si| FAIL[Fail lista vacia]
+    VAL --&gt;|No| FE[ForEach lista en listaNombres]
+    FE --&gt; RESOLVE[Resolver list id por displayName]
+    RESOLVE --&gt; FOUND{Lista existe?}
+    FOUND --&gt;|No| ERR[Lista no encontrada]
+    FOUND --&gt;|Si| EXP_ITEMS[Export items Graph]
+    EXP_ITEMS --&gt; EXP_COLS[Export columns Graph]
+    EXP_COLS --&gt; WRITE[Escribir JSON en ADLS Maestros]
+    WRITE --&gt; NEXT[Siguiente lista]
+    NEXT --&gt; FE
+    FE --&gt; AGG[Agregar pipelineReturnValue]
+    AGG --&gt; END[Fin items o single]</code></pre>
+<p><strong>Listas por defecto:</strong> MaestroSociedades, MaestroProducto, MaestroTipoExpedicion, MaestroMoneda, MaestroLineaProductiva, MaestroJerarquia, MaestroDestino, MaestroCentroProductivo, MaestroCantera, MaestroAuxiliar1.</p>
+<p><strong>Destino ADLS:</strong> <code>refactoring-minerva-001/Maestros/{lista}/{lista}.json</code> y <code>{lista}_columns.json</code>.</p>
+<hr />
+<h3 id="74-trigger-databricks-databricks-job-with-params">7.4 — Trigger Databricks (<code>Databricks Job with Params</code>)</h3>
+<p>Artefacto: <a href="../Final_ADF_Pipelines/Orquestración/Databricks%20Job%20with%20Params_v2.json"><code>Databricks Job with Params_v2.json</code></a></p>
+<p><strong>Narrativa:</strong> pipeline <strong>genérico</strong> invocado por <code>Load_Engine</code>. Registra la ejecución, obtiene token de Databricks y llama a la API <code>jobs/run-now</code> pasando el JSON construido por el orquestador. <strong>No procesa los datos</strong> — solo dispara el job; el detalle Bronze queda fuera de esta guía.</p>
+<pre class="mermaid"><code>flowchart LR
+    IN[Load_Engine invoca wrapper] --&gt; LOG1[Log entrada SQL]
+    LOG1 --&gt; TOKEN[Subpipeline Databricks Acces Token]
+    TOKEN --&gt; AT[Set Access_token]
+    AT --&gt; POST[WebActivity POST jobs run-now]
+    POST --&gt;|OK| LOGOK[Log salida SQL]
+    POST --&gt;|Fail| LOGERR[Log error SQL]</code></pre>
+<p><strong>Parámetros de entrada:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parámetro</th>
+<th>Origen</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Job</code></td>
+<td><code>LoadEngineJobId</code> del main</td>
+<td>ID numérico job Databricks</td>
+</tr>
+<tr>
+<td><code>PipelineOrigen</code></td>
+<td>Constante <code>MINERVA</code></td>
+<td>Trazabilidad</td>
+</tr>
+<tr>
+<td><code>Params</code></td>
+<td><code>var_load_engine_params</code></td>
+<td>JSON string con filePath o items maestro</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fuera de alcance:</strong> comportamiento interno del notebook/job Load Engine (Bronze).</p>
+<hr />
+<h2 id="bloque-8-matriz-de-parametros-e2e">BLOQUE 8 — Matriz de parámetros E2E</h2>
+<table>
+<thead>
+<tr>
+<th>Origen (app)</th>
+<th>Power Automate</th>
+<th>ADF main</th>
+<th><code>var_load_engine_params</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ddSociedad</code></td>
+<td>Ruta SP + HTTP (PLANTILLA)</td>
+<td><code>sociedad</code></td>
+<td>Incluido</td>
+</tr>
+<tr>
+<td><code>ddAno</code></td>
+<td>Idem</td>
+<td><code>ano</code></td>
+<td>Incluido</td>
+</tr>
+<tr>
+<td><code>ddMes</code></td>
+<td>Idem</td>
+<td><code>mes</code></td>
+<td>Incluido</td>
+</tr>
+<tr>
+<td><code>ddConcepto.IdPlantilla</code></td>
+<td>Ruta SP + HTTP</td>
+<td><code>concepto</code></td>
+<td>Incluido</td>
+</tr>
+<tr>
+<td><code>PROCESS</code>/<code>REPROCESS</code>/<code>DELETE</code></td>
+<td>HTTP</td>
+<td><code>accion</code></td>
+<td><code>accion</code></td>
+</tr>
+<tr>
+<td><code>PLANTILLA</code>/<code>MAESTRO</code></td>
+<td><code>Condition_3</code> + HTTP</td>
+<td><code>origen</code></td>
+<td><code>origen</code></td>
+</tr>
+<tr>
+<td>Nombre plantilla</td>
+<td>Metadatos SP</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>User().Email</code></td>
+<td>Metadatos SP</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>—</td>
+<td>—</td>
+<td><code>listaNombres</code> (default)</td>
+<td>MAESTRO</td>
+</tr>
+<tr>
+<td>—</td>
+<td>—</td>
+<td><code>catalog</code> (<code>dev</code>)</td>
+<td><code>catalog</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ejemplo-json-plantilla-databricks">Ejemplo JSON — PLANTILLA → Databricks</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;accion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PROCESS&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;filePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Plantillas/CMSA_PL_2026_06_ejemplo.xlsx&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;catalog&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dev&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;origen&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PLANTILLA&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sociedad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CMSA&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;ano&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;mes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;06&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;concepto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PL&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="ejemplo-json-maestro-databricks">Ejemplo JSON — MAESTRO → Databricks</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;origen&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MAESTRO&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;catalog&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dev&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sourceFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sharepoint_list_v3&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;listaFolder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Maestros/MaestroSociedades&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;filePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Maestros/MaestroSociedades/MaestroSociedades.json&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;schemaPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Maestros/MaestroSociedades/MaestroSociedades_columns.json&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;listaNombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MaestroSociedades&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="ejemplo-recorrido-procesar-pl-narrativa-completa">Ejemplo recorrido — Procesar PL (narrativa completa)</h3>
+<ol>
+<li><strong>Usuario:</strong> CMSA, 2026, 06, PL → <strong>Procesar</strong> en la <a href="https://apps.powerapps.com/play/e/default-495d03db-f910-4fcf-9e4c-2cab5fb10e56/a/219fddb2-851a-47b9-a4c7-92dce5697ced?tenantId=495d03db-f910-4fcf-9e4c-2cab5fb10e56">app UAT</a>.</li>
+<li><strong>Power Automate:</strong> valida Excel en <a href="https://cemolins.sharepoint.com/sites/MinervaCdG2.0-Test/Documentos%20compartidos/Forms/AllItems.aspx">SharePoint de Carga</a>, archiva en <a href="https://cemolins.sharepoint.com/sites/MinervaCdG2.0-Test/Documentos%20Consolidados/Forms/Agrupado%20Periodo%20%20Area.aspx">Documentos Consolidados</a>, HTTP <code>origen=PLANTILLA</code>, <code>accion=PROCESS</code>.</li>
+<li><strong>ADF main:</strong> ejecuta <code>minerva_sharepoint_to_blob</code> → blob <code>refactoring-minerva-001/Plantillas/CMSA_PL_2026_06_....xlsx</code>.</li>
+<li><strong>ADF wrapper:</strong> <code>Load_Engine</code> → job <code>1097709261114096</code> con JSON <code>filePath</code>, <code>catalog</code>, <code>origen</code>, periodo.</li>
+<li><strong>App:</strong> Notify verde con mensaje de Power Automate.</li>
+</ol>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as Usuario
+    participant App as App
+    participant PA as PowerAutomate
+    participant Main as MINERVA_Main
+    participant Plant as sharepoint_to_blob
+    participant DBX as Databricks wrapper
+
+    U-&gt;&gt;App: Procesar PL CMSA 2026 06
+    App-&gt;&gt;PA: 8 params PROCESS PLANTILLA
+    PA-&gt;&gt;PA: Validar y archivar SP
+    PA-&gt;&gt;Main: createRun
+    Main-&gt;&gt;Plant: ExecutePipeline
+    Plant--&gt;&gt;Main: filePath
+    Main-&gt;&gt;DBX: Load_Engine Params
+    DBX-&gt;&gt;DBX: run-now
+    PA--&gt;&gt;App: SUCCESS
+    App--&gt;&gt;U: Notify verde</code></pre>
+<hr />
+<h2 id="bloque-9-errores-frecuentes-y-soporte">BLOQUE 9 — Errores frecuentes y soporte</h2>
+<table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Capa</th>
+<th>Causa probable</th>
+<th>Dónde mirar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Botón gris</td>
+<td>App</td>
+<td>Sin permiso</td>
+<td><a href="https://cemolins.sharepoint.com/sites/MinervaCdG2.0-Test/Lists/Test2/AllItems.aspx">Test2 / MinervaPermisos</a></td>
+</tr>
+<tr>
+<td><em>Debe informar todos los parámetros</em></td>
+<td>App</td>
+<td>Dropdown vacío</td>
+<td>Completar 4 selectores</td>
+</tr>
+<tr>
+<td><em>No se ha encontrado ningún fichero…</em></td>
+<td>PA</td>
+<td>Carpeta SP vacía</td>
+<td><a href="https://cemolins.sharepoint.com/sites/MinervaCdG2.0-Test/Documentos%20compartidos/Forms/AllItems.aspx">SharePoint de Carga</a></td>
+</tr>
+<tr>
+<td><em>…más de un fichero…</em></td>
+<td>PA</td>
+<td>Varios Excel</td>
+<td>Dejar solo uno en carpeta</td>
+</tr>
+<tr>
+<td>Notify error tras pulsar</td>
+<td>PA</td>
+<td><code>status</code> ≠ SUCCESS</td>
+<td>Run history Power Automate</td>
+</tr>
+<tr>
+<td><code>EMPTY_ORIGEN</code></td>
+<td>ADF</td>
+<td><code>origen</code> no llega</td>
+<td>Body HTTP en PA</td>
+</tr>
+<tr>
+<td>Ingesta OK, sin Databricks</td>
+<td>ADF</td>
+<td>Fallo Load_Engine</td>
+<td>Monitor ADF</td>
+</tr>
+<tr>
+<td><code>SP_FILE_NOT_FOUND</code></td>
+<td>ADF plantillas</td>
+<td>Sin <code>.xlsx</code> en ruta</td>
+<td>SharePoint + parámetros periodo</td>
+</tr>
+<tr>
+<td>Lista maestro no encontrada</td>
+<td>ADF maestros</td>
+<td>Nombre lista incorrecto</td>
+<td><code>listaNombres</code> default main</td>
+</tr>
+<tr>
+<td>Job not found</td>
+<td>Databricks wrapper</td>
+<td><code>LoadEngineJobId</code> incorrecto</td>
+<td>Parámetro main pipeline</td>
+</tr>
+<tr>
+<td>Actualizar Maestros sin feedback real</td>
+<td>App + PA</td>
+<td>Sin Respond en rama MAESTRO</td>
+<td>BLOQUE 11</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="bloque-11-deuda-tecnica-conocida">BLOQUE 11 — Deuda técnica conocida</h2>
+<table>
+<thead>
+<tr>
+<th>Tema</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Detalles_Ejecución</code></td>
+<td>Pantalla WIP con errores App Checker</td>
+</tr>
+<tr>
+<td>Panel ejecución</td>
+<td>Etiquetas estáticas; <code>btnRefreshExecution</code> incompleto</td>
+</tr>
+<tr>
+<td>Bronze / notebooks</td>
+<td>Fuera de alcance de esta guía</td>
+</tr>
+</tbody>
+</table>
+<hr />
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; Molins 2026
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.instant", "content.code.copy", "content.action.edit"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
