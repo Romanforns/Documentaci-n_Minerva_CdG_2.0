@@ -120,9 +120,61 @@
   color: rgba(255, 255, 255, 0.75) !important;
 }
 
+.md-tabs__link:hover {
+  color: #ffffff !important;
+}
+
 .md-tabs__item--active .md-tabs__link {
   color: #ffffff !important;
   border-bottom-color: #00a8c5 !important;
+}
+
+/* Iconos, búsqueda, GitHub y toggle claro/oscuro en blanco */
+.md-header .md-icon,
+.md-header .md-icon svg,
+.md-header__button,
+.md-header__button svg {
+  color: #ffffff !important;
+  fill: currentColor !important;
+}
+
+.md-header label[for="__search"],
+.md-header label[for="__palette_0"],
+.md-header label[for="__palette_1"] {
+  color: #ffffff !important;
+}
+
+.md-search__input {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.md-search__input::placeholder {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.md-search__icon {
+  color: #ffffff !important;
+}
+
+.md-source {
+  color: #ffffff !important;
+}
+
+.md-source__icon,
+.md-source__icon svg {
+  color: #ffffff !important;
+  fill: currentColor !important;
+}
+
+.md-source__repository,
+.md-source__fact,
+.md-source__fact .md-source__fact-icon {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.md-source__fact .md-icon svg {
+  fill: currentColor !important;
 }
 
 @media screen and (min-width: 76.25em) {
