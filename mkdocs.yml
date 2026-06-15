@@ -9,20 +9,37 @@ theme:
   language: es
   icon:
     repo: fontawesome/brands/github
+  logo: imagen.png
+  favicon: imagen.png
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: molins
+      accent: molins
+      toggle:
+        icon: material/brightness-4
+        name: Cambiar a modo oscuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: molins
+      accent: molins
+      toggle:
+        icon: material/brightness-7
+        name: Cambiar a modo claro
   features:
-    - navigation.tabs
     - navigation.instant
-    - navigation.sections
     - content.code.copy
     - content.action.edit
 
 extra:
   generator: false
 
+extra_css:
+  - stylesheets/extra.css
+
 copyright: '&copy; Molins 2026'
 
 nav:
-  - Inicio: README.md
   - Flujo ingesta PowerApps: flujo-ingesta-powerapps-trigger-databricks.md
 
 markdown_extensions:

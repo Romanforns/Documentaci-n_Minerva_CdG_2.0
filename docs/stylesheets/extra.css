@@ -1,0 +1,92 @@
+/* Molins brand — rgba(0, 62, 57, 1) = #003e39 */
+[data-md-color-primary="molins"] {
+  --md-primary-fg-color: #ffffff;
+  --md-primary-fg-color--light: #ffffff;
+  --md-primary-fg-color--dark: #ffffff;
+  --md-primary-bg-color: #003e39;
+  --md-primary-bg-color--light: #005a52;
+  --md-primary-bg-color--dark: #002a26;
+  --md-accent-fg-color: #ffffff;
+  --md-accent-bg-color: #00a8c5;
+  --md-typeset-a-color: #007a70;
+}
+
+[data-md-color-scheme="slate"][data-md-color-primary="molins"] {
+  --md-typeset-a-color: #4dd4c4;
+}
+
+.md-sidebar--primary,
+.md-sidebar--secondary {
+  display: none;
+}
+
+.md-grid {
+  max-width: none;
+}
+
+.md-main__inner {
+  margin: 0;
+}
+
+.md-content {
+  max-width: none;
+}
+
+.md-content__inner {
+  margin: 1.2rem 2.4rem;
+}
+
+.mermaid {
+  width: 100%;
+}
+
+.md-typeset table:not([class]) {
+  width: 100%;
+}
+
+/* Header: logo Molins centrado */
+.md-header__inner {
+  max-width: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.md-header__inner > label[for="__drawer"] {
+  display: none;
+}
+
+.md-header__title {
+  display: none;
+}
+
+.md-header__button.md-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+}
+
+.md-header__button.md-logo img {
+  height: 2.4rem;
+  width: auto;
+}
+
+.md-header__source {
+  margin-left: auto;
+  z-index: 1;
+}
+
+form.md-header__option[data-md-component="palette"],
+.md-header__inner > label[for="__search"] {
+  order: -2;
+  z-index: 1;
+}
+
+.md-header__inner > .md-search {
+  order: -1;
+  z-index: 1;
+}

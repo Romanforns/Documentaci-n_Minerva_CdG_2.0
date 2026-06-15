@@ -1,29 +1,26 @@
-# Fuljo Ingesta PowerApps - Trigger DataBricks (Minerva CdG Evolution 2.0)
-
-> **Documento único canónico** — ingesta desde Power App hasta trigger Databricks vía ADF.
-> 
-> 
-> Audiencia: negocio, UAT, soporte funcional y equipo técnico.
-> 
-
 ---
+hide:
+  - navigation
+  - toc
+---
+
+# Flujo Ingesta PowerApps - Trigger DataBricks (Minerva CdG Evolution 2.0)
 
 ## Índice de bloques
 
-| Bloque | Título |
-| --- | --- |
-| 0 | Metadatos y alcance |
-| 1 | Accesos y ubicaciones UAT |
-| 2 | Cómo funciona la solución |
-| 3 | Configuración y prerequisitos |
-| 4 | Power App |
-| 5 | Power Automate (diagramas detallados) |
-| 6 | Flujos de negocio (4 escenarios) |
-| 7 | Azure Data Factory (pipelines ADF) |
-| 8 | Matriz de parámetros E2E |
-| 9 | Errores frecuentes y soporte |
-| 10 | Artefactos en repositorio |
-| 11 | Deuda técnica conocida |
+| Bloque | Sección | Descripción |
+| --- | --- | --- |
+| 0 | [Metadatos y alcance](#bloque-0-metadatos-y-alcance) | Alcance del documento, audiencia y glosario de términos clave. |
+| 1 | [Accesos y ubicaciones UAT](#bloque-1-accesos-y-ubicaciones-uat) | Enlaces directos a la app, SharePoint, listas y mapa de componentes. |
+| 2 | [Cómo funciona la solución](#bloque-2-como-funciona-la-solucion) | Visión de negocio, swimlane global y secuencia temporal del flujo E2E. |
+| 3 | [Configuración y prerequisitos](#bloque-3-configuracion-y-prerequisitos) | Permisos de usuario, preparación de SharePoint e importación de artefactos. |
+| 4 | [Power App](#bloque-4-power-app) | Pantallas, selectores en cascada, RBAC y botones de la canvas app. |
+| 5 | [Power Automate](#bloque-5-power-automate) | Flujo PowerAppV2→HTTP, ramas PLANTILLA/MAESTRO y diagramas detallados. |
+| 6 | [Flujos de negocio](#bloque-6-flujos-de-negocio) | Cuatro escenarios: procesar, reprocesar, borrar y actualizar maestros. |
+| 7 | [Azure Data Factory](#bloque-7-azure-data-factory) | Pipelines main, plantillas, maestros y wrapper hacia Databricks. |
+| 8 | [Matriz de parámetros E2E](#bloque-8-matriz-de-parametros-e2e) | Correspondencia de parámetros entre app, PA, ADF y job Databricks. |
+| 9 | [Errores frecuentes y soporte](#bloque-9-errores-frecuentes-y-soporte) | Síntomas habituales, causa probable y dónde mirar por capa. |
+| 11 | [Deuda técnica conocida](#bloque-11-deuda-tecnica-conocida) | Limitaciones actuales y pantallas o funciones aún en desarrollo. |
 
 ---
 
