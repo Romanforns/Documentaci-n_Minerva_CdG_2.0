@@ -15,7 +15,14 @@
   --md-typeset-a-color: #4dd4c4;
 }
 
-.md-sidebar--primary,
+.md-header {
+  background-color: #003e39 !important;
+}
+
+.md-tabs {
+  background-color: #003e39 !important;
+}
+
 .md-sidebar--secondary {
   display: none;
 }
@@ -44,30 +51,22 @@
   width: 100%;
 }
 
-/* Header: logo Molins centrado */
+/* Header: logo izquierda + título del sitio */
 .md-header__inner {
   max-width: none;
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
 }
 
 .md-header__inner > label[for="__drawer"] {
   display: none;
 }
 
-.md-header__title {
-  display: none;
-}
-
 .md-header__button.md-logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
+  position: static;
+  transform: none;
+  margin: 0 0.6rem 0 0;
   padding: 0;
-  z-index: 2;
 }
 
 .md-header__button.md-logo img {
@@ -75,18 +74,33 @@
   width: auto;
 }
 
+.md-header__title {
+  display: flex;
+  flex-grow: 1;
+}
+
+.md-header__ellipsis {
+  display: flex;
+  align-items: center;
+}
+
+.md-header__topic {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.md-header__topic[data-md-component="header-topic"] {
+  display: none;
+}
+
 .md-header__source {
   margin-left: auto;
-  z-index: 1;
 }
 
-form.md-header__option[data-md-component="palette"],
-.md-header__inner > label[for="__search"] {
-  order: -2;
-  z-index: 1;
-}
-
-.md-header__inner > .md-search {
-  order: -1;
-  z-index: 1;
+/* Ocultar sidebar izquierdo; las tabs sustituyen la navegación */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    display: none;
+  }
 }

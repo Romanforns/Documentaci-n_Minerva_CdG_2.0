@@ -1,4 +1,4 @@
-site_name: Minerva CdG 2.0 — Documentación
+site_name: Minerva CdG Evolution 2.0 — Documentación
 site_url: https://romanforns.github.io/Documentaci-n_Minerva_CdG_2.0/
 repo_url: https://github.com/Romanforns/Documentaci-n_Minerva_CdG_2.0
 repo_name: Documentaci-n_Minerva_CdG_2.0
@@ -27,6 +27,7 @@ theme:
         icon: material/brightness-7
         name: Cambiar a modo claro
   features:
+    - navigation.tabs
     - navigation.instant
     - content.code.copy
     - content.action.edit
@@ -40,6 +41,7 @@ extra_css:
 copyright: '&copy; Molins 2026'
 
 nav:
+  - Inicio: README.md
   - Flujo ingesta PowerApps: flujo-ingesta-powerapps-trigger-databricks.md
 
 markdown_extensions:

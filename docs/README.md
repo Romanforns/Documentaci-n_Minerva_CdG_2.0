@@ -1,3 +1,9 @@
-# Minerva CdG Evolution 2.0 — Documentación
+# Bienvenida
 
-Documentación publicada en [GitHub Pages](https://romanforns.github.io/Documentaci-n_Minerva_CdG_2.0/).
+Documentación funcional y técnica del proyecto Minerva CdG Evolution 2.0.
+
+## Documentos
+
+| Documento | Descripción |
+| --- | --- |
+| [Flujo ingesta PowerApps → Databricks](flujo-ingesta-powerapps-trigger-databricks.md) | Guía canónica E2E: Power App, Power Automate, SharePoint, ADF y trigger Databricks. |
